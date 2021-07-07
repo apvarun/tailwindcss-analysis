@@ -1,0 +1,63 @@
+{
+  "name": "tailwindcss-analysis",
+  "version": "0.1.0",
+  "description": "Analyse the TailwindCSS classes used in your application",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "bin": {
+    "tailwindcss-analysis": "index.js"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "keywords": [
+    "analysis",
+    "tailwindcss"
+  ],
+  "author": "Varun A P",
+  "module": "dist/tailwindcss-analysis.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/tailwindcss-analysis.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/tailwindcss-analysis.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^5.0.1",
+    "husky": "^7.0.1",
+    "size-limit": "^5.0.1",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.0",
+    "typescript": "^4.3.5"
+  }
+}
