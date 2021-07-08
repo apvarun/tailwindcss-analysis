@@ -2,4 +2,4 @@
 
 'use strict';
 
-require('./dist/index')//.run(process.argv.slice(2));
+require('./dist/index')
