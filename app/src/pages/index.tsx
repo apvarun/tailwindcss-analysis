@@ -1,5 +1,6 @@
 import React from 'react';
 import useSWR from 'swr';
+import Categories from '../components/Categories';
 import Header from '../components/Header';
 import OverviewStats from '../components/OverviewStats';
 import { fetcher } from '../utils/fetcher';
@@ -15,7 +16,8 @@ export default function Home() {
       {hasError && <p>Error Loading data. Try again.</p>}
       {!hasError && (
         <>
-          <OverviewStats data={data.stats} />
+          <OverviewStats data={data.metrics} />
+          <Categories data={data.categories} />
         </>
       )}
     </div>
