@@ -3,7 +3,7 @@ import cac from 'cac';
 import { execFileSync } from 'child_process';
 import { version } from '../package.json';
 import { readModule } from './utils/readModule';
-import { analyze } from './utils/analyzer';
+import { analyze } from './analyzer';
 import { readFileSync } from 'fs';
 
 const cli = cac('tailwindcss-analysis');

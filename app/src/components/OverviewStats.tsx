@@ -1,5 +1,5 @@
 import React from 'react';
-import { Metrics } from '../../../src/utils/analyzer';
+import { Metrics } from '../../../src/types/metrics';
 
 const keyNames: { [key: string]: string } = {
   colors: 'Colors',
