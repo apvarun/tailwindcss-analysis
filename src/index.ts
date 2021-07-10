@@ -2,9 +2,10 @@ import { resolve, join } from 'path';
 import cac from 'cac';
 import { execFileSync } from 'child_process';
 import { version } from '../package.json';
-import { readModule } from './utils/readModule';
+import { readModule } from './helpers/readModule';
 import { analyze } from './analyzer';
 import { readFileSync } from 'fs';
+import parseCSS from './parse';
 
 const cli = cac('tailwindcss-analysis');
 
@@ -12,6 +13,7 @@ cli
   .help()
   .version(version)
   .option('--open', 'Open in browser', { default: true })
+  .option('--html [filepath]', 'Output analysis result file in JSON')
   .option('--json [filepath]', 'Output analysis result file in JSON');
 
 const parsed = cli.parse();
@@ -62,7 +64,14 @@ async function run() {
 
   const metrics = await analyze(tailwindCSSFile);
 
-  console.log(metrics);
+  const categories = parseCSS(tailwindCSSFile);
+
+  const output = {
+    metrics,
+    categories,
+  };
+
+  console.log(output);
 
   if (parsed.options.json) {
     let jsonPath = join(root, parsed.options.json);
