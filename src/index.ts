@@ -15,7 +15,6 @@ cli
   .help()
   .version(version)
   .option('--open', 'Open in browser', { default: true })
-  .option('--html [filepath]', 'Output analysis result file in JSON')
   .option('--json [filepath]', 'Output analysis result file in JSON');
 
 const parsed = cli.parse();
