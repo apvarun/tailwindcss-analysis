@@ -23,9 +23,7 @@ export async function startServer(output: {
     return res.end();
   });
 
-  app.use(
-    sirv(resolve(__dirname, '../app/dist'), { dev: true, single: true })
-  );
+  app.use(sirv(resolve(__dirname, '../app/dist'), { dev: true, single: true }));
 
   http.createServer(app).listen(port);
 

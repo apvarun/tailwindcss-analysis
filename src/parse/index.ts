@@ -1,5 +1,5 @@
 // @ts-ignore
-import { toJSON, toCSS } from 'cssjson';
+import { toJSON } from 'cssjson';
 import { dynamicUtilities, staticUtilities } from '../helpers/categories';
 import ClassnameInfo from '../types/classnameInfo';
 

@@ -85,8 +85,8 @@ async function run() {
     await writeFileSync(jsonPath, JSON.stringify(output), 'utf-8');
   }
 
-  if(parsed.options.open){
-    startServer(output)
+  if (parsed.options.open) {
+    startServer(output);
   }
 }
 
