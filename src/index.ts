@@ -1,4 +1,5 @@
 import { resolve, join } from 'path';
+import { writeFileSync } from 'fs';
 import cac from 'cac';
 import { execFileSync } from 'child_process';
 import { version } from '../package.json';
@@ -6,6 +7,7 @@ import { readModule } from './helpers/readModule';
 import { analyze } from './analyzer';
 import { readFileSync } from 'fs';
 import parseCSS from './parse';
+import { startServer } from './helpers/server';
 
 const cli = cac('tailwindcss-analysis');
 
@@ -80,7 +82,11 @@ async function run() {
     }
 
     // generate JSON
-    // await fs.writeFile(jsonPath, metrics, 'utf-8');
+    await writeFileSync(jsonPath, JSON.stringify(output), 'utf-8');
+  }
+
+  if(parsed.options.open){
+    startServer(output)
   }
 }
 
