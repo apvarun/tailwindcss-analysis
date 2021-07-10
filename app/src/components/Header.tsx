@@ -2,11 +2,11 @@ import React from 'react';
 
 export default function Header() {
   return (
-    <div className="text-blueGray-700 transition duration-500 ease-in-out transform bg-white border rounded-lg flex flex-col flex-wrap p-5 mx-auto md:items-center md:flex-row justify-between">
+    <div className="transition duration-500 ease-in-out transform bg-white border rounded-lg flex flex-col flex-wrap p-5 mx-auto md:items-center md:flex-row justify-between">
       <a href="/" className="pr-2 lg:pr-8 lg:px-6 focus:outline-none">
         <div className="inline-flex items-center">
           <div className="w-2 h-2 p-2 mr-2 rounded-full bg-green-500"></div>
-          <h2 className="block p-2 text-xl transition duration-500 ease-in-out transform cursor-pointer hover:text-blueGray-500 lg:text-x lg:mr-8">
+          <h2 className="block p-2 text-xl transition duration-500 ease-in-out transform cursor-pointer lg:text-x lg:mr-8">
             TailwindCSS Analysis
           </h2>
         </div>
