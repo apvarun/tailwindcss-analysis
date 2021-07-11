@@ -7,7 +7,7 @@
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
-    "src"
+    "app/dist/**/*"
   ],
   "engines": {
     "node": ">=10"
@@ -20,7 +20,7 @@
     "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "prepare": "npm run build && npm run build:app",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "dev:app": "vite",

@@ -1,5 +1,6 @@
-node_modules
+.github
+*.log
 .DS_Store
-dist
+node_modules
 dist-ssr
 *.local
