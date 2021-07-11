@@ -1,11 +1,12 @@
 import React from 'react';
+import logo from '../assets/analysis-300px.png';
 
 export default function Header() {
   return (
     <div className="transition duration-500 ease-in-out transform bg-white border rounded-lg flex flex-col flex-wrap p-5 mx-auto md:items-center md:flex-row justify-between">
       <a href="/" className="pr-2 lg:pr-8 lg:px-6 focus:outline-none">
         <div className="inline-flex items-center">
-          <div className="w-2 h-2 p-2 mr-2 rounded-full bg-green-500"></div>
+          <img className="w-12 h-12 mr-2" src={logo} />
           <h2 className="block p-2 text-xl transition duration-500 ease-in-out transform cursor-pointer lg:text-x lg:mr-8">
             TailwindCSS Analysis
           </h2>

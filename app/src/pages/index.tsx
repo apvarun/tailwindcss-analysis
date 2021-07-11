@@ -8,13 +8,13 @@ import { fetcher } from '../utils/fetcher';
 export default function Home() {
   const { data, error } = useSWR('/api/stats', fetcher);
 
-  const hasError = error || !data;
 
   return (
     <div className="container mx-auto px-6">
       <Header />
-      {hasError && <p>Error Loading data. Try again.</p>}
-      {!hasError && (
+      {error && <p>Error Loading data. Try again.</p>}
+      {!data && <p>Loading data. Please wait.</p>}
+      {!error && data && (
         <>
           <OverviewStats data={data.metrics} />
           <Categories data={data.categories} />
