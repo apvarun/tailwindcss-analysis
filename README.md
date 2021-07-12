@@ -5,7 +5,7 @@
 
 Analyse the TailwindCSS classes used in your application
 
-![TailwindCSS Analysis](./app/src/assets/analysis-300px.png)
+![TailwindCSS Analysis](https://github.com/apvarun/tailwindcss-analysis/raw/main/app/src/assets/analysis-300px.png)
 
 Here's why:
 
@@ -22,7 +22,7 @@ npx tailwindcss-analysis
 
 ## Screenshots
 
-![TailwindCSS Analysis Report](./app/src/assets/screenshot.png)
+![TailwindCSS Analysis Report](https://github.com/apvarun/tailwindcss-analysis/raw/main/app/src/assets/screenshot.png)
 
 [View Live Report](https://tailwindcss-analysis.netlify.app/)
 
