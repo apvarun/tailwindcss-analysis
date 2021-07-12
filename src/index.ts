@@ -45,7 +45,7 @@ async function run() {
 
   execFileSync(
     'npx',
-    ['tailwindcss', '--minify', '-o', 'tailwind-output.css'],
+    ['tailwindcss@2.2.4', '--minify', '-o', 'tailwind-output.css'],
     {
       env: { ...process.env, NODE_ENV: 'production' },
       stdio: 'ignore',
