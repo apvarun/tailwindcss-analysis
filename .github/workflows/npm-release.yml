@@ -16,6 +16,6 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
           scope: ''
       - run: yarn
-      - run: yarn publish
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
