@@ -2,20 +2,14 @@
 import analyzer from 'analyze-css';
 import { Metrics } from './types/metrics';
 
-interface AnalyzerResult {
-  metrics: Metrics;
-}
-
 const opts = {
   noOffenders: true,
 };
 
 export async function analyze(css: string) {
-  return new Promise<Metrics>((res, rej) => {
-    new analyzer(css, opts, function(err: Error, results: AnalyzerResult) {
-      if (err) {
-        rej(err);
-      }
+  return new Promise<Metrics>(async (res, rej) => {
+    try {
+      const results = await analyzer(css, opts)
 
       const {
         metrics: {
@@ -44,6 +38,9 @@ export async function analyze(css: string) {
         rules,
         declarations,
       });
-    });
+    } catch (err) {
+
+      rej(err)
+    }
   });
 }

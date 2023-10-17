@@ -8,40 +8,45 @@ export default function parseCSS(cssString: string) {
 
   const categorizedCSS: ClassnameInfo[] = [];
 
-  Object.entries(json?.children || {}).forEach(([className]) => {
-    const info: Partial<ClassnameInfo> = {};
+  Object.entries(json?.children || {}).forEach(([classNames]) => {
 
-    let name = className.startsWith('.') ? className.slice(1) : className;
+    classNames.split(',').forEach(className => {
 
-    if (name[0] === '!') {
-      info.important = true;
-      name = name.slice(1);
-    }
-    if (name.startsWith('@media')) {
-      info.category = '@media';
-    } else if (name.includes(':')) {
-      const variants = name.split(/:/g);
-      info.prefixes = variants.slice(0, -1);
-      name = variants.slice(-1)[0];
-    }
+      const info: Partial<ClassnameInfo> = {};
 
-    info.name = name;
+      let name = className.startsWith('.') ? className.slice(1) : className;
 
-    const [type] = (name.startsWith('-') ? name.slice(1) : name).split('-');
-
-    if (!info.category) {
-      if (name.includes('[') && name.includes(']')) {
-        info.category = 'variable';
-      } else if (name in staticUtilities) {
-        info.category = staticUtilities[name];
-      } else if (type in dynamicUtilities) {
-        info.category = dynamicUtilities[type];
+      if (name[0] === '!') {
+        info.important = true;
+        name = name.slice(1);
       }
-    }
+      if (name.startsWith('@media')) {
+        info.category = '@media';
+      } else if (name.includes(':')) {
+        const variants = name.split(/:/g);
+        info.prefixes = variants.slice(0, -1);
+        name = variants.slice(-1)[0];
+      }
 
-    info.category = info.category || 'unknown';
+      info.name = name;
 
-    categorizedCSS.push(info as ClassnameInfo);
+      const [type] = (name.startsWith('-') ? name.slice(1) : name).split('-');
+
+      if (!info.category) {
+        if (name in staticUtilities) {
+          info.category = staticUtilities[name];
+        } else if (type in dynamicUtilities && type !== name) {
+          info.category = dynamicUtilities[type];
+        } else if (name.includes('[') && name.includes(']')) {
+          info.category = 'variable';
+        }
+      }
+
+      info.category = info.category || 'unknown';
+
+      categorizedCSS.push(info as ClassnameInfo);
+
+    })
   });
 
   return categorizedCSS;

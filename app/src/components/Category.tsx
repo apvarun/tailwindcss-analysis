@@ -14,7 +14,7 @@ export default function Category({
       <div className="flex flex-wrap gap-2">
         {items.map(item => (
           <span className="px-2 py-0.5 bg-gray-600 rounded text-white">
-            {item.name}
+            {item.name.replaceAll('\\', '')}
           </span>
         ))}
       </div>
