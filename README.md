@@ -30,7 +30,7 @@ npx tailwindcss-analysis
 
 - [ ] Display file size (minified and gzipped)
 - [ ] Cleanup CSS output after execution
-- [ ] Show human-readable values for colors and fonts
+- [-] Show human-readable values for colors and fonts
 
 See the [open issues](https://github.com/apvarun/tailwindcss-analysis/issues) for a list of proposed features (and known issues).
 
