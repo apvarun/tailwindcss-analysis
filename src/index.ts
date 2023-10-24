@@ -73,8 +73,6 @@ async function run() {
     categories,
   };
 
-  console.log(output);
-
   if (parsed.options.json) {
     let jsonPath = join(root, parsed.options.json);
     if (!jsonPath.endsWith('.json')) {
