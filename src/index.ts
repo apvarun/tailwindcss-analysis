@@ -30,11 +30,12 @@ async function run() {
     const tailwindConfig = readModule(join(root, '/tailwind.config.js'));
     if (
       !tailwindConfig ||
-      !tailwindConfig.purge ||
-      tailwindConfig.purge.length === 0
+      (!tailwindConfig.purge ||
+        tailwindConfig.purge.length === 0) && (!tailwindConfig.content ||
+          tailwindConfig.content.length === 0)
     ) {
       console.log(
-        'Ensure that files to `purge` are configured in your tailwind config file'
+        'Ensure that files to `purge/content` are configured in your tailwind config file'
       );
       return;
     }
