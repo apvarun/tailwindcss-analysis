@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-analysis",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Analyse the TailwindCSS classes used in your application",
   "license": "MIT",
   "main": "dist/index.js",
