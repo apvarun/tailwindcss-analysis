@@ -19,7 +19,7 @@
   "scripts": {
     "start": "tsup src/index.ts --watch",
     "build": "tsup src/index.ts --minify terser --format esm,cjs --dts",
-    "prepare": "npm run build && npm run build:app",
+    "prepare": "pnpm run build && pnpm run build:app",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "dev:app": "vite",
