@@ -1,11 +1,10 @@
 import { resolve, join } from 'path';
-import { writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import cac from 'cac';
-import { execFileSync } from 'child_process';
+import spawn from 'cross-spawn';
 import { version } from '../package.json';
 import { readModule } from './helpers/readModule';
 import { analyze } from './analyzer';
-import { readFileSync } from 'fs';
 import parseCSS from './parse';
 import { startServer } from './helpers/server';
 
@@ -30,9 +29,8 @@ async function run() {
     const tailwindConfig = readModule(join(root, '/tailwind.config.js'));
     if (
       !tailwindConfig ||
-      (!tailwindConfig.purge ||
-        tailwindConfig.purge.length === 0) && (!tailwindConfig.content ||
-          tailwindConfig.content.length === 0)
+      ((!tailwindConfig.purge || tailwindConfig.purge.length === 0) &&
+        (!tailwindConfig.content || tailwindConfig.content.length === 0))
     ) {
       console.log(
         'Ensure that files to `purge/content` are configured in your tailwind config file'
@@ -44,14 +42,10 @@ async function run() {
     return;
   }
 
-  execFileSync(
-    'npx',
-    ['tailwindcss', '--minify', '-o', 'tailwind-output.css'],
-    {
-      env: { ...process.env, NODE_ENV: 'production' },
-      stdio: 'ignore',
-    }
-  );
+  spawn.sync('npx', ['tailwindcss', '--minify', '-o', 'tailwind-output.css'], {
+    env: { ...process.env, NODE_ENV: 'production' },
+    stdio: 'ignore',
+  });
 
   let tailwindCSSFile = '';
 
