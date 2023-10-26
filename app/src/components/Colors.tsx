@@ -4,7 +4,7 @@ import ClassnameInfo from '../../../src/types/classnameInfo'
 export const Colors = ({ data }: { data: ClassnameInfo[] }) => {
 
   const colors = useMemo(() => {
-    const textAndBg = data.filter(item => item.category === 'text' || item.category === 'background')
+    const textAndBg = data.filter(item => item.category === 'Text' || item.category === 'Background')
     const allTags = textAndBg.map(item => item.name);
 
     const colorTags = allTags.filter(tag => {
@@ -24,8 +24,8 @@ export const Colors = ({ data }: { data: ClassnameInfo[] }) => {
       <h2 className='mb-4 text-2xl font-medium'>
         Colors
       </h2>
-      <div className='flex flex-wrap gap-5'>
-        {colors.map(color => <div className='flex flex-col items-center'>
+      <div className='flex flex-wrap gap-5 px-4'>
+        {colors.map(color => <div key={color} className='flex flex-col items-center'>
           <div className={`w-16 h-16 rounded border ${color.replace('text', 'bg')}`}>&nbsp;</div>
           <p>{color.replaceAll('\\', '')}</p>
         </div>)}

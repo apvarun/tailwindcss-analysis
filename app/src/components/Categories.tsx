@@ -4,18 +4,22 @@ import ClassnameInfo from '../../../src/types/classnameInfo';
 import Category from './Category';
 
 export default function Categories({ data }: { data: ClassnameInfo[] }) {
-  const [groups, setGroups] = useState<Record<string, any>>({});
+  const [groups, setGroups] = useState<Record<string, ClassnameInfo[]>>({});
 
   useEffect(() => {
-    let newGroups: Record<string, any> = {};
+    let newGroups: Record<string, ClassnameInfo[]> = {};
 
-    data.forEach(item => {
-      if (item.category === 'unknown' || item.category === 'variable') {
+    data.forEach((item) => {
+      if (item.category === 'Unknown' || item.category === 'Variable') {
         return;
       }
 
       if (newGroups[item.category]) {
-        newGroups[item.category].push(item);
+        if (
+          !newGroups[item.category].find((exItem) => exItem.name === item.name)
+        ) {
+          newGroups[item.category].push(item);
+        }
       } else {
         newGroups[item.category] = [item];
       }
@@ -29,9 +33,9 @@ export default function Categories({ data }: { data: ClassnameInfo[] }) {
       <h2 className="mb-4 text-2xl font-medium">
         Class names based on categories
       </h2>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-3 gap-4 px-4">
         {Object.entries(groups).map(([groupName, items]) => (
-          <Category name={groupName} items={items} />
+          <Category key={groupName} name={groupName} items={items} />
         ))}
       </div>
     </div>

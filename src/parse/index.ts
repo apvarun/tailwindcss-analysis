@@ -2,6 +2,7 @@
 import { toJSON } from 'cssjson';
 import { dynamicUtilities, staticUtilities } from '../helpers/categories';
 import ClassnameInfo from '../types/classnameInfo';
+import camelToTitleCase from '../helpers/camelToTitleCase';
 
 export default function parseCSS(cssString: string) {
   const json = toJSON(cssString) as Record<string, any>;
@@ -43,6 +44,8 @@ export default function parseCSS(cssString: string) {
       }
 
       info.category = info.category || 'unknown';
+
+      info.category = camelToTitleCase(info.category);
 
       categorizedCSS.push(info as ClassnameInfo);
 
