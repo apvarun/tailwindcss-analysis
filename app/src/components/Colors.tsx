@@ -26,7 +26,7 @@ export const Colors = ({ data }: { data: ClassnameInfo[] }) => {
       </h2>
       <div className='flex flex-wrap gap-5 px-4'>
         {colors.map(color => <div key={color} className='flex flex-col items-center'>
-          <div className={`w-16 h-16 rounded border ${color.replace('text', 'bg')}`}>&nbsp;</div>
+          <div className={`w-16 h-16 rounded border ${color.replaceAll('\\', '').replace('text', 'bg')}`}>&nbsp;</div>
           <p>{color.replaceAll('\\', '')}</p>
         </div>)}
       </div>
